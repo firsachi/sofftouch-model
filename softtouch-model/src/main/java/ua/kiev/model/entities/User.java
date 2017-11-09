@@ -1,4 +1,4 @@
-package entityes;
+package ua.kiev.model.entities;
 
 public class User {
 	
