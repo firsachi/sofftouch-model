@@ -15,7 +15,13 @@
 		<spring-framework.version>4.3.2.RELEASE</spring-framework.version>
 
 		<!-- Hibernate / JPA -->
-		<hibernate.version>4.2.1.Final</hibernate.version>
+		<hibernate.version>5.2.10.Final</hibernate.version>
+		
+		<!-- driver database version -->
+		<postgresql.version>9.4-1201-jdbc41</postgresql.version>
+		
+		<!-- connection pool version -->
+		<c3p0.version>0.9.1.2</c3p0.version>
 
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
@@ -38,6 +44,11 @@
 			<artifactId>spring-tx</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring-framework.version}</version>
+        </dependency>
 
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
@@ -60,6 +71,19 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
+		<!-- driver database -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+    		<artifactId>postgresql</artifactId>
+    		<version>${postgresql.version}</version>
+		</dependency>
+		
+		<!-- C3P0 connection pool -->
+        <dependency>
+    		<groupId>c3p0</groupId>
+    		<artifactId>c3p0</artifactId>
+    		<version>${c3p0.version}</version>
+		</dependency>
 		
 		<!-- Test Artifacts -->
 		<dependency>
