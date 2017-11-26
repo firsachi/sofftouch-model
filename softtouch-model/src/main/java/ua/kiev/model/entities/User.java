@@ -3,6 +3,8 @@ package ua.kiev.model.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,6 +20,10 @@ public class User {
 
 	@Column(name = "company_name", nullable = false)
 	private String companyName;
+	
+	@ManyToOne
+	@JoinColumn(name = "idRole")
+	private Role role;
 	
 	public String getUsername() {
 		return username;
@@ -43,9 +49,20 @@ public class User {
 		this.companyName = companyName;
 	}
 
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", companyName=" + companyName + "]";
+		return "User [username=" + username + ", password=" + password + ", companyName=" + companyName + ", role="
+				+ role + "]";
 	}
+
+	
 
 }
