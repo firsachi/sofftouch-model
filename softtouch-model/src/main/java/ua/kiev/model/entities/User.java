@@ -22,8 +22,12 @@ public class User {
 	private String companyName;
 	
 	@ManyToOne
-	@JoinColumn(name = "idRole")
+	@JoinColumn(name = "role_id")
 	private Role role;
+	
+	@ManyToOne
+	@JoinColumn(name = "organizationUnit")
+	private OrganizationUnit organizationUnit;
 	
 	public String getUsername() {
 		return username;
@@ -57,12 +61,17 @@ public class User {
 		this.role = role;
 	}
 
+	public OrganizationUnit getOrganizationUnit() {
+		return organizationUnit;
+	}
+
+	public void setOrganizationUnit(OrganizationUnit organizationUnit) {
+		this.organizationUnit = organizationUnit;
+	}
+
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", companyName=" + companyName + ", role="
-				+ role + "]";
+				+ role + ", organizationUnit=" + organizationUnit + "]";
 	}
-
-	
-
 }

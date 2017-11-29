@@ -1,51 +1,40 @@
 package ua.kiev.model.entities;
 
-import java.util.List;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements Serializable  {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3425729982743504056L;
+
 	@Id
-	@SequenceGenerator(name = "ids_role", sequenceName = "ids_role")
-	@GeneratedValue(generator="ids_role", strategy=GenerationType.SEQUENCE)
-	@Column(name="id_role")
-	private int idRole;
-	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "name_role")
-	private String nameRole;
-	
-	@OneToMany(mappedBy = "role")
-	private List<User> users;
-	
-	public int getIdRole() {
-		return idRole;
-	}
+	private RoleEnum nameRole;
 
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
-	}
-
-	public String getNameRole() {
+	public RoleEnum getNameRole() {
 		return nameRole;
 	}
 
-	public void setNameRole(String nameRole) {
+	public void setNameRole(RoleEnum nameRole) {
 		this.nameRole = nameRole;
 	}
 
 	@Override
 	public String toString() {
-		return "Role [idRole=" + idRole + ", nameRole=" + nameRole + "]";
+		return "Role [nameRole=" + nameRole + "]";
 	}
+	
 	
 }
