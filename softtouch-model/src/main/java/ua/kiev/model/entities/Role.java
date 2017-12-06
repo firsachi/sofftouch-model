@@ -22,6 +22,13 @@ public class Role implements Serializable  {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "name_role")
 	private RoleEnum nameRole;
+	
+	public Role() {
+	}
+
+	public Role(RoleEnum nameRole) {
+		this.nameRole = nameRole;
+	}
 
 	public RoleEnum getNameRole() {
 		return nameRole;
