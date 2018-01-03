@@ -1,11 +1,12 @@
 package ua.kiev.model.dao;
 
+import java.util.List;
+
 import ua.kiev.model.entities.User;
 
-public interface UserDao {
+public interface UserDao extends GenericMainDao<User>{
 	
-	void create(User user);
-	void update(User user);
-	User byUser(String  email);
+	public User byEmail(String emeil);
 	
+	public List<User> getAll();
 }

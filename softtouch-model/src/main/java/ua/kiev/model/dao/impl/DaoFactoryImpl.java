@@ -1,6 +1,8 @@
 package ua.kiev.model.dao.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import ua.kiev.model.dao.DaoFactory;
 import ua.kiev.model.dao.RolesDao;
@@ -10,7 +12,8 @@ import ua.kiev.model.dao.UserDao;
 public class DaoFactoryImpl extends DaoFactory{
 
 	@Autowired
-	private UserDao userDaoImpl;
+	@Qualifier("userDao")
+	private UserDao userDao;
 	
 	@Autowired
 	private RolesDao roleDaoImpl;
@@ -20,7 +23,7 @@ public class DaoFactoryImpl extends DaoFactory{
 	
 	@Override
 	public UserDao createUserDaoImpl() {
-		return userDaoImpl;
+		return userDao;
 	}
 
 	@Override
