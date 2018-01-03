@@ -9,7 +9,7 @@ import ua.kiev.model.dao.SubdivisionDao;
 @Repository
 public class SubdivisionDaoImpl implements SubdivisionDao{
 
-	@Override
+	
 	public Set<SubdivisionDao> getAll() {
 		return null;
 	}

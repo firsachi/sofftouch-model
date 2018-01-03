@@ -1,10 +1,12 @@
 package ua.kiev.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +24,12 @@ public class Subdivision implements Serializable{
 	
 	@Column(name = "name", unique = true)
 	private String name;
+	
+	@OneToMany(mappedBy = "subdivision")
+	private List<User> users;
+	
+	@Column(name = "delete", nullable = false)
+	private boolean delete;
 
 	public int getId() {
 		return id;
@@ -39,37 +47,22 @@ public class Subdivision implements Serializable{
 		this.name = name;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Subdivision other = (Subdivision) obj;
-		if (id != other.id)
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
-	@Override
-	public String toString() {
-		return "Subdivision [id=" + id + ", name=" + name + "]";
+	public boolean isDelete() {
+		return delete;
 	}
+
+	public void setDelete(boolean delete) {
+		this.delete = delete;
+	}
+
+	
 	
 }

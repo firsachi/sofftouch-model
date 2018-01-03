@@ -23,13 +23,11 @@ public class RoleDaoImpl  implements RolesDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Override
 	public Role byRole(RoleEnum roleEnum) {
 		Session session = sessionFactory.getCurrentSession();
 		return session.get(Role.class, roleEnum);
 	}
 
-	@Override
 	public Set<Role> all() {
 		Session session = sessionFactory.getCurrentSession();
 		String query = "SELECT r FROM Role r";
@@ -40,7 +38,7 @@ public class RoleDaoImpl  implements RolesDao{
 		}else {
 			tq = session.createQuery(query, Role.class);
 		}
-		Set<Role> result = new HashSet<>(tq.getResultList());
+		Set<Role> result = new HashSet<Role>(tq.getResultList());
 		return result;
 	}
 	

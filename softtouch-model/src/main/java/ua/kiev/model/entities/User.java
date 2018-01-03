@@ -1,5 +1,7 @@
 package ua.kiev.model.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,8 +11,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4932831319362682848L;
+
 	@Id
 	@Column(name = "username", nullable=false, unique= true)
 	private String username;
@@ -26,8 +33,8 @@ public class User {
 	private Role role;
 	
 	@ManyToOne
-	@JoinColumn(name = "organizationUnit")
-	private OrganizationUnit organizationUnit;
+	@JoinColumn(name = "subdivision")
+	private Subdivision subdivision;
 	
 	public String getUsername() {
 		return username;
@@ -59,19 +66,5 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public OrganizationUnit getOrganizationUnit() {
-		return organizationUnit;
-	}
-
-	public void setOrganizationUnit(OrganizationUnit organizationUnit) {
-		this.organizationUnit = organizationUnit;
-	}
-
-	@Override
-	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", companyName=" + companyName + ", role="
-				+ role + ", organizationUnit=" + organizationUnit + "]";
 	}
 }

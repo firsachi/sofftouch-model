@@ -2,7 +2,7 @@ package ua.kiev.model.dao;
 
 import java.io.Serializable;
 
-public interface MainDao<T, E extends Serializable> {
+public interface MainDaol<T, E extends Serializable> {
 	
 	void create(T newInstance);
 	T read(E id);
