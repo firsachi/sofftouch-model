@@ -3,7 +3,7 @@ package ua.kiev.model.dao;
 public abstract class DaoFactory {
 	
 	public abstract UserDao createUserDaoImpl();
-	public abstract RolesDao createRolesDaoImpl();
+	public abstract RoleDao createRolesDaoImpl();
 	public abstract SubdivisionDao createSubdivisionDao();
 	
 	public static DaoFactory getInstance() {

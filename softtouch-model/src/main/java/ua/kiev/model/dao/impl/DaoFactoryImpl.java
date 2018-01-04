@@ -2,21 +2,19 @@ package ua.kiev.model.dao.impl;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import ua.kiev.model.dao.DaoFactory;
-import ua.kiev.model.dao.RolesDao;
+import ua.kiev.model.dao.RoleDao;
 import ua.kiev.model.dao.SubdivisionDao;
 import ua.kiev.model.dao.UserDao;
 
 public class DaoFactoryImpl extends DaoFactory{
 
 	@Autowired
-	@Qualifier("userDao")
 	private UserDao userDao;
 	
 	@Autowired
-	private RolesDao roleDaoImpl;
+	private RoleDao roleDaoImpl;
 	
 	@Autowired
 	private SubdivisionDao subdivisionDaoImpl;
@@ -27,7 +25,7 @@ public class DaoFactoryImpl extends DaoFactory{
 	}
 
 	@Override
-	public RolesDao createRolesDaoImpl() {
+	public RoleDao createRolesDaoImpl() {
 		return roleDaoImpl;
 	}
 

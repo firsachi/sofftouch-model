@@ -1,16 +1,23 @@
 package ua.kiev.model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
+@SequenceGenerator(name = "userIds", sequenceName = "user_ids")
 public class User implements Serializable{
 	
 	/**
@@ -19,6 +26,10 @@ public class User implements Serializable{
 	private static final long serialVersionUID = -4932831319362682848L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userIds")
+	@Column(name = "id")
+	private int id;
+	
 	@Column(name = "username", nullable=false, unique= true)
 	private String username;
 	
@@ -28,14 +39,27 @@ public class User implements Serializable{
 	@Column(name = "company_name", nullable = false)
 	private String companyName;
 	
-	@ManyToOne
-	@JoinColumn(name = "role_id")
-	private Role role;
+	@ManyToMany
+    @JoinTable( 
+        name = "users_roles", 
+        joinColumns = @JoinColumn(
+          name = "user_id", referencedColumnName = "id"), 
+        inverseJoinColumns = @JoinColumn(
+          name = "role_id", referencedColumnName = "id")) 
+	private List<Role> roles;
 	
 	@ManyToOne
 	@JoinColumn(name = "subdivision")
 	private Subdivision subdivision;
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -60,11 +84,20 @@ public class User implements Serializable{
 		this.companyName = companyName;
 	}
 
-	public Role getRole() {
-		return role;
+	public List<Role> getRole() {
+		return roles;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRole(List<Role> roles) {
+		this.roles = roles;
 	}
+
+	public Subdivision getSubdivision() {
+		return subdivision;
+	}
+
+	public void setSubdivision(Subdivision subdivision) {
+		this.subdivision = subdivision;
+	}
+
 }

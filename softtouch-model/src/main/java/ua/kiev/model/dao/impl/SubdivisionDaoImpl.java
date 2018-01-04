@@ -2,13 +2,10 @@ package ua.kiev.model.dao.impl;
 
 import java.util.Set;
 
-import org.springframework.stereotype.Repository;
-
 import ua.kiev.model.dao.SubdivisionDao;
+import ua.kiev.model.entities.Subdivision;
 
-@Repository
-public class SubdivisionDaoImpl implements SubdivisionDao{
-
+public class SubdivisionDaoImpl extends GenericMainDaoImpl<Subdivision> implements SubdivisionDao{
 	
 	public Set<SubdivisionDao> getAll() {
 		return null;
