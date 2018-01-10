@@ -6,6 +6,6 @@ import ua.kiev.model.entities.Subdivision;
 
 public interface SubdivisionDao extends GenericMainDao<Subdivision>{
 	
-	Set<SubdivisionDao> getAll();
+	Set<Subdivision> getAll();
 
 }

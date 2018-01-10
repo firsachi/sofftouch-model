@@ -50,6 +50,10 @@ public class Role implements Serializable  {
 	public Role() {
 	}
 
+	public Role(RoleEnum nameRole) {
+		this.nameRole = nameRole;
+	}
+
 	public int getId() {
 		return id;
 	}
