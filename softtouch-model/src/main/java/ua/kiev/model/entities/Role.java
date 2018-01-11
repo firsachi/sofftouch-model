@@ -18,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-@SequenceGenerator(name = "roleId", sequenceName = "role_ids")
+
 public class Role implements Serializable  {
 	
 	/**
@@ -27,6 +27,7 @@ public class Role implements Serializable  {
 	private static final long serialVersionUID = -3425729982743504056L;
 
 	@Id
+	@SequenceGenerator(name = "roleId", sequenceName = "role_ids", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "roleId")
 	@Column(name = "id")
 	private int id;

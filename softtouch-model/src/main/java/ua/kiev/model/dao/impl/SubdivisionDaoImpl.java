@@ -1,7 +1,6 @@
 package ua.kiev.model.dao.impl;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.TypedQuery;
 
@@ -15,12 +14,11 @@ public class SubdivisionDaoImpl extends GenericMainDaoImpl<Subdivision> implemen
 	
 	@Transactional
 	@Override
-	public Set<Subdivision> getAll() {
+	public List<Subdivision> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "SELECT s FROM Subdivision s";
 		TypedQuery<Subdivision> tQuery = session.createQuery(hql, Subdivision.class);
-		Set<Subdivision> result = new HashSet<Subdivision>(tQuery.getResultList());
-		return result;
+		return tQuery.getResultList();
 	}
 
 }

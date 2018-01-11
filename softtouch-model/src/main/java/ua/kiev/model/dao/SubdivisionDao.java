@@ -1,11 +1,11 @@
 package ua.kiev.model.dao;
 
-import java.util.Set;
+import java.util.List;
 
 import ua.kiev.model.entities.Subdivision;
 
 public interface SubdivisionDao extends GenericMainDao<Subdivision>{
 	
-	Set<Subdivision> getAll();
+	List<Subdivision> getAll();
 
 }

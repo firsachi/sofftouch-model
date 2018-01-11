@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "subdivision")
-@SequenceGenerator(name = "sequenceSubdivision", sequenceName = "subdivision_ids")
+
 public class Subdivision implements Serializable{
 	
 	/**
@@ -23,6 +24,7 @@ public class Subdivision implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name = "sequenceSubdivision", sequenceName = "subdivision_ids", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceSubdivision")
 	@Column(name = "id")
 	private int id;
@@ -30,8 +32,8 @@ public class Subdivision implements Serializable{
 	@Column(name = "name", unique = true)
 	private String name;
 	
-	@OneToMany(mappedBy = "subdivision")
-	private List<User> users;
+	@OneToMany(mappedBy = "subdivision", fetch = FetchType.EAGER)
+	private List<Company> companies;
 	
 	@Column(name = "delete", nullable = false)
 	private boolean delete;
@@ -52,12 +54,12 @@ public class Subdivision implements Serializable{
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
-		return users;
+	public List<Company> getCompany() {
+		return companies;
 	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setCompany(List<Company> companies) {
+		this.companies = companies;
 	}
 
 	public boolean isDelete() {
@@ -67,7 +69,5 @@ public class Subdivision implements Serializable{
 	public void setDelete(boolean delete) {
 		this.delete = delete;
 	}
-
-	
 	
 }

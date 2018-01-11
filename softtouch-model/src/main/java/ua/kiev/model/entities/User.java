@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-@SequenceGenerator(name = "userIds", sequenceName = "user_ids")
+
 public class User implements Serializable{
 	
 	/**
@@ -26,6 +26,7 @@ public class User implements Serializable{
 	private static final long serialVersionUID = -4932831319362682848L;
 
 	@Id
+	@SequenceGenerator(name = "userIds", sequenceName = "user_ids", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userIds")
 	@Column(name = "id")
 	private int id;
@@ -35,9 +36,6 @@ public class User implements Serializable{
 	
 	@Column(name = "password", nullable = false)
 	private String password;
-
-	@Column(name = "company_name", nullable = false)
-	private String companyName;
 	
 	@ManyToMany
     @JoinTable( 
@@ -47,10 +45,10 @@ public class User implements Serializable{
         inverseJoinColumns = @JoinColumn(
           name = "role_id", referencedColumnName = "id")) 
 	private List<Role> roles;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "subdivision")
-	private Subdivision subdivision;
+	@JoinColumn(name = "company")
+	private Company company;
 
 	public int getId() {
 		return id;
@@ -76,28 +74,12 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
 	public List<Role> getRole() {
 		return roles;
 	}
 
 	public void setRole(List<Role> roles) {
 		this.roles = roles;
-	}
-
-	public Subdivision getSubdivision() {
-		return subdivision;
-	}
-
-	public void setSubdivision(Subdivision subdivision) {
-		this.subdivision = subdivision;
 	}
 
 }
