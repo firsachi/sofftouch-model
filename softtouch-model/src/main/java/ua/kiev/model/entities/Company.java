@@ -29,6 +29,39 @@ public class Company {
 	@ManyToOne
 	@JoinColumn(name = "subdivision")
 	private Subdivision subdivision;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getComapanyName() {
+		return comapanyName;
+	}
+
+	public void setComapanyName(String comapanyName) {
+		this.comapanyName = comapanyName;
+	}
+
+	public boolean isDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
+
+	public Subdivision getSubdivision() {
+		return subdivision;
+	}
+
+	public void setSubdivision(Subdivision subdivision) {
+		this.subdivision = subdivision;
+	}
+	
 	
 	
 }
