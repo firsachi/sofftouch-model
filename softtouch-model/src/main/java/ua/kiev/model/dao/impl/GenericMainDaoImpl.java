@@ -36,7 +36,6 @@ public abstract class GenericMainDaoImpl<E> implements GenericMainDao<E>{
 		session.delete(entity);
 	}
 	
-	@Transactional
 	@Override
 	public E byId(int primaryKey) {
 		Session session = sessionFactory.getCurrentSession();
