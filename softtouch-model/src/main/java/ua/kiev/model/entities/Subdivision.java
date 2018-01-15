@@ -38,6 +38,13 @@ public class Subdivision implements Serializable{
 	@Column(name = "delete", nullable = false)
 	private boolean delete;
 
+	public Subdivision() {
+	}
+	
+	public Subdivision(int id) {
+		this.id = id;
+	}
+
 	public int getId() {
 		return id;
 	}

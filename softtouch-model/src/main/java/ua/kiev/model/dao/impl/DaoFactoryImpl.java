@@ -3,6 +3,7 @@ package ua.kiev.model.dao.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ua.kiev.model.dao.CompanyDao;
 import ua.kiev.model.dao.DaoFactory;
 import ua.kiev.model.dao.RoleDao;
 import ua.kiev.model.dao.SubdivisionDao;
@@ -19,6 +20,9 @@ public class DaoFactoryImpl extends DaoFactory{
 	@Autowired
 	private SubdivisionDao subdivisionDaoImpl;
 	
+	@Autowired
+	private CompanyDao companyDaoImpl;
+	
 	@Override
 	public UserDao createUserDaoImpl() {
 		return userDao;
@@ -32,5 +36,10 @@ public class DaoFactoryImpl extends DaoFactory{
 	@Override
 	public SubdivisionDao createSubdivisionDao() {
 		return subdivisionDaoImpl;
+	}
+
+	@Override
+	public CompanyDao createCompanyDao() {
+		return companyDaoImpl;
 	}
 }

@@ -13,6 +13,10 @@ public abstract class GenericMainDaoImpl<E> implements GenericMainDao<E>{
 	
 	private Class<E> type;
 	
+	protected Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
+	
 	public final void setType(Class<E> type) {
 		this.type = type;
 	}

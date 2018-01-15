@@ -5,6 +5,7 @@ public abstract class DaoFactory {
 	public abstract UserDao createUserDaoImpl();
 	public abstract RoleDao createRolesDaoImpl();
 	public abstract SubdivisionDao createSubdivisionDao();
+	public abstract CompanyDao createCompanyDao();
 	
 	public static DaoFactory getInstance() {
 		try {

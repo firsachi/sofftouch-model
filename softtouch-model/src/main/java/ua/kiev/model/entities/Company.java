@@ -20,7 +20,7 @@ public class Company {
 	@Column(name = "id")
 	private int id;
 	
-	@Column(name = "company_name", unique = true, nullable = false)
+	@Column(name = "company_name", nullable = false)
 	private String comapanyName;
 	
 	@Column(name = "disable")
