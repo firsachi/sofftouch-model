@@ -50,6 +50,9 @@ public class User implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "company")
 	private Company company;
+	
+	@Column(name = "disable")
+	private boolean disable;
 
 	public int getId() {
 		return id;
@@ -83,4 +86,21 @@ public class User implements Serializable{
 		this.roles = roles;
 	}
 
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+
+	public boolean isDisable() {
+		return disable;
+	}
+
+	public void setDisable(boolean disable) {
+		this.disable = disable;
+	}
+
+	
 }

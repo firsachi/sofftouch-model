@@ -1,5 +1,6 @@
 package ua.kiev.model.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.NoResultException;
@@ -30,8 +31,13 @@ public class UserDaoImpl extends GenericMainDaoImpl<User> implements UserDao{
 
 	@Override
 	public List<User> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String hql = "FROM User u";
+		TypedQuery<User> tQuery = getSession().createQuery(hql, User.class);
+		try {
+			return tQuery.getResultList();
+		}catch (NullPointerException ne) {
+			return new ArrayList<User>();
+		}
 	}
 
 
