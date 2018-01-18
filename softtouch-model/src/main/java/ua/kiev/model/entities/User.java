@@ -51,7 +51,7 @@ public class User implements Serializable{
 	@JoinColumn(name = "company")
 	private Company company;
 	
-	@Column(name = "disable")
+	@Column(name = "disable", columnDefinition = "boolean default false")
 	private boolean disable;
 
 	public int getId() {
