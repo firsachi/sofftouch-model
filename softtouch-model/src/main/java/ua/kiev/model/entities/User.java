@@ -35,6 +35,12 @@ public class User implements Serializable{
 	@Column(name = "username", nullable=false, unique= true)
 	private String username;
 	
+	@Column
+	private String firstname;
+	
+	@Column
+	private String lastname;
+	
 	@Column(name = "password", nullable = false)
 	private String password;
 	
@@ -70,6 +76,22 @@ public class User implements Serializable{
 		this.username = username;
 	}
 
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -78,11 +100,11 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public List<Role> getRole() {
+	public List<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRole(List<Role> roles) {
+	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -101,6 +123,8 @@ public class User implements Serializable{
 	public void setDisable(boolean disable) {
 		this.disable = disable;
 	}
+
+
 
 	
 }
