@@ -40,5 +40,18 @@ public class UserDaoImpl extends GenericMainDaoImpl<User> implements UserDao{
 		}
 	}
 
+	@Override
+	public User find(String name, int id) {
+		String hql = "FROM User u WHERE u.username = :name AND u.id != :id";
+		TypedQuery<User> tQuery = getSession().createQuery(hql, User.class);
+		tQuery.setParameter("name", name);
+		tQuery.setParameter("id", id);
+		try {
+			return tQuery.getSingleResult();
+		}catch(NoResultException result) {
+			return null;
+		}
+	}
+
 
 }

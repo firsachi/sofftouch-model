@@ -29,6 +29,15 @@ public class Company {
 	@ManyToOne
 	@JoinColumn(name = "subdivision")
 	private Subdivision subdivision;
+	
+	
+
+	public Company() {
+	}
+
+	public Company(int id) {
+		this.id = id;
+	}
 
 	public int getId() {
 		return id;

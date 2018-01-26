@@ -54,6 +54,10 @@ public class Role implements Serializable  {
 		this.nameRole = nameRole;
 	}
 
+	public Role(int id) {
+		this.id = id;
+	}
+	
 	public int getId() {
 		return id;
 	}

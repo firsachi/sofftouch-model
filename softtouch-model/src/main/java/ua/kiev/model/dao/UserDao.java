@@ -9,4 +9,6 @@ public interface UserDao extends GenericMainDao<User>{
 	public User byEmail(String emeil);
 	
 	public List<User> getAll();
+	
+	public User find(String name, int id);
 }
